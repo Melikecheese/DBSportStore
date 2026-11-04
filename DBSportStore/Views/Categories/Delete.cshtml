@@ -1,0 +1,6 @@
+﻿﻿@model DBSportStore.Models.Category
+@{ ViewBag.Title = "Xóa danh mục"; Layout = "~/Views/Shared/_StoreLayout.cshtml"; }
+<h2 class="section-title">XÓA DANH MỤC</h2><h4>Bạn có chắc chắn muốn xóa danh mục này không?</h4><hr />
+<dl class="dl-horizontal"><dt>Mã danh mục</dt><dd>@Model.CategoryID</dd><dt>Tên danh mục</dt><dd>@Model.CategoryName</dd><dt>Số sản phẩm</dt><dd>@Model.Products.Count</dd></dl>
+@if (Model.Products.Any()) { <p class="text-danger">Danh mục này đang có sản phẩm tham chiếu. Hãy chuyển hoặc xóa các sản phẩm liên quan trước khi xóa danh mục.</p> }
+@using (Html.BeginForm("Delete", "Categories", FormMethod.Post)) { @Html.AntiForgeryToken() @Html.Hidden("id", Model.CategoryID) <input type="submit" value="Xác nhận xóa" class="btn btn-danger" @(Model.Products.Any() ? "disabled=disabled" : "") /> @Html.ActionLink("Quay lại danh sách", "Index", null, new { @class = "btn btn-default" }) }

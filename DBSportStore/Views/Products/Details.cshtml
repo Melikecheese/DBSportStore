@@ -1,0 +1,19 @@
+﻿﻿@model DBSportStore.Models.Product
+@{ ViewBag.Title = "Chi tiết sản phẩm"; Layout = "~/Views/Shared/_StoreLayout.cshtml"; }
+<h2 class="section-title">CHI TIẾT SẢN PHẨM</h2>
+<div class="row">
+    <div class="col-md-4">
+        @if (!string.IsNullOrEmpty(Model.ImageUrl)) { <img src="~/Content/images/@Model.ImageUrl" alt="@Model.ProductName" style="max-width:100%;max-height:300px;object-fit:contain;border:1px solid #ddd;border-radius:10px;padding:8px;" /> }
+    </div>
+    <div class="col-md-8">
+        <dl class="dl-horizontal">
+            <dt>Tên sản phẩm</dt><dd>@Model.ProductName</dd>
+            <dt>Mô tả</dt><dd>@Model.Description</dd>
+            <dt>Danh mục</dt><dd>@(Model.Category == null ? "" : Model.Category.CategoryName)</dd>
+            <dt>Đơn giá</dt><dd>@Model.Price.ToString("#,##0") đ</dd>
+            <dt>Số lượng tồn kho</dt><dd>@Model.StockQuantity</dd>
+            <dt>Trạng thái</dt><dd>@(Model.IsActive ? "Đang bán" : "Ngừng bán")</dd>
+        </dl>
+    </div>
+</div>
+<p>@Html.ActionLink("Sửa", "Edit", new { id = Model.ProductID }, new { @class = "btn btn-primary" }) @Html.ActionLink("Quay lại danh sách", "Index", null, new { @class = "btn btn-default" })</p>

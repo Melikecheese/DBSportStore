@@ -1,0 +1,59 @@
+﻿﻿@model DBSportStore.Models.Product
+@{
+    ViewBag.Title = "Thêm sản phẩm";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+}
+<h2 class="section-title">THÊM SẢN PHẨM</h2>
+@using (Html.BeginForm("Create", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Thông tin sản phẩm</h4><hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.ProductName, "Tên sản phẩm", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">@Html.TextBoxFor(m => m.ProductName, new { @class = "form-control", placeholder = "Ví dụ: Giày chạy bộ" })@Html.ValidationMessageFor(m => m.ProductName, "", new { @class = "text-danger" })</div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Description, "Mô tả", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">@Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = "3", placeholder = "Mô tả sản phẩm" })@Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })</div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.CategoryID, "Danh mục", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">@Html.DropDownList("CategoryID", null, "-- Chọn danh mục --", new { @class = "form-control" })@Html.ValidationMessageFor(m => m.CategoryID, "", new { @class = "text-danger" })</div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Price, "Đơn giá", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">@Html.TextBoxFor(m => m.Price, "{0:0}", new { @class = "form-control", type = "number", min = "0", step = "1", placeholder = "Ví dụ: 990000" })@Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger" })</div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Hình sản phẩm</label>
+            <div class="col-md-10">
+                <input type="file" id="imageFile" name="imageFile" class="form-control" accept=".jpg,.jpeg,.png" onchange="previewImage(event)" />
+                @Html.ValidationMessage("ImageUrl", "", new { @class = "text-danger" })
+                <small>Chỉ nhận JPG/JPEG/PNG, tối đa 2 MB.</small><br />
+                <img id="imagePreview" alt="Xem trước ảnh" style="display:none;max-width:160px;max-height:160px;margin-top:10px;border-radius:8px;" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.StockQuantity, "Số lượng tồn kho", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">@Html.TextBoxFor(m => m.StockQuantity, new { @class = "form-control", type = "number", min = "0" })@Html.ValidationMessageFor(m => m.StockQuantity, "", new { @class = "text-danger" })</div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.IsActive, "Đang bán", new { @class = "control-label col-md-2" })
+            <div class="col-md-10"><div class="checkbox">@Html.CheckBoxFor(m => m.IsActive)</div></div>
+        </div>
+        <div class="form-group"><div class="col-md-offset-2 col-md-10"><input type="submit" value="Thêm sản phẩm" class="btn btn-primary" /></div></div>
+    </div>
+}
+<p>@Html.ActionLink("Quay lại danh sách", "Index")</p>
+<script>
+function previewImage(event) {
+    var file = event.target.files && event.target.files[0];
+    var preview = document.getElementById('imagePreview');
+    if (!file) { preview.style.display = 'none'; preview.removeAttribute('src'); return; }
+    var reader = new FileReader();
+    reader.onload = function (e) { preview.src = e.target.result; preview.style.display = 'block'; };
+    reader.readAsDataURL(file);
+}
+</script>

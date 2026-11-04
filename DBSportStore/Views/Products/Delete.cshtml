@@ -1,0 +1,14 @@
+﻿﻿@model DBSportStore.Models.Product
+@{ ViewBag.Title = "Xóa sản phẩm"; Layout = "~/Views/Shared/_StoreLayout.cshtml"; }
+<h2 class="section-title">XÓA SẢN PHẨM</h2>
+<h4>Bạn có chắc chắn muốn xóa sản phẩm này không?</h4><hr />
+<div class="row">
+    <div class="col-md-3">@if (!string.IsNullOrEmpty(Model.ImageUrl)) { <img src="~/Content/images/@Model.ImageUrl" alt="@Model.ProductName" style="max-width:100%;max-height:220px;object-fit:contain;" /> }</div>
+    <div class="col-md-9"><dl class="dl-horizontal">
+        <dt>Tên sản phẩm</dt><dd>@Model.ProductName</dd><dt>Mô tả</dt><dd>@Model.Description</dd>
+        <dt>Danh mục</dt><dd>@(Model.Category == null ? "" : Model.Category.CategoryName)</dd>
+        <dt>Đơn giá</dt><dd>@Model.Price.ToString("#,##0") đ</dd><dt>Số lượng tồn kho</dt><dd>@Model.StockQuantity</dd>
+        <dt>Trạng thái</dt><dd>@(Model.IsActive ? "Đang bán" : "Ngừng bán")</dd>
+    </dl></div>
+</div>
+@using (Html.BeginForm("Delete", "Products", FormMethod.Post)) { @Html.AntiForgeryToken() @Html.Hidden("id", Model.ProductID) <input type="submit" value="Xác nhận xóa" class="btn btn-danger" /> @Html.ActionLink("Quay lại danh sách", "Index", null, new { @class = "btn btn-default" }) }
