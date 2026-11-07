@@ -24,7 +24,7 @@ namespace DBSportStore.Controllers
         [ChildActionOnly]
         public ActionResult BagCart()
         {
-            return PartialView("_BagCart", GetCart());
+            return PartialView("BagCart", GetCart());
         }
 
         public ActionResult ShowCart()
