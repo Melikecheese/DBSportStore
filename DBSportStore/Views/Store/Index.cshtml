@@ -65,7 +65,7 @@
                             <div class="product-price">@item.Price.ToString("#,##0") đ</div>
                             <div class="product-actions">
                                 @Html.ActionLink("Chi tiết", "Details", "Products", new { id = item.ProductID }, new { @class = "btn-soft" })
-                                <a class="btn-brand" href="#">Mua</a>
+                                @Html.ActionLink("Mua", "AddToCart", "ShoppingCart", new { id = item.ProductID }, new { @class = "btn-brand" })
                             </div>
                         </div>
                     </article>

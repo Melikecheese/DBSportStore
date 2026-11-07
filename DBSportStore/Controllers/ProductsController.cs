@@ -6,9 +6,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DBSportStore.Models;
+using DBSportStore.Filters;
 
 namespace DBSportStore.Controllers
 {
+    [AdminAuthorize]
     public class ProductsController : Controller
     {
         private readonly DBSportStoreEntities db = new DBSportStoreEntities();
@@ -20,6 +22,7 @@ namespace DBSportStore.Controllers
             return View(db.Products.Include(p => p.Category).ToList());
         }
 
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

@@ -1,0 +1,17 @@
+@{
+    ViewBag.Title = "Quản trị";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+}
+<h2 class="section-title">TRANG QUẢN TRỊ</h2>
+<div class="store-shell" style="grid-template-columns:1fr 1fr;">
+    <div class="category-panel">
+        <h3>Quản lý sản phẩm</h3>
+        <p>Thêm, sửa, xóa và xem danh sách sản phẩm.</p>
+        @Html.ActionLink("Mở quản lý sản phẩm", "Index", "Products", null, new { @class = "btn-brand" })
+    </div>
+    <div class="category-panel">
+        <h3>Quản lý danh mục</h3>
+        <p>Thêm, sửa, xóa và xem danh sách danh mục.</p>
+        @Html.ActionLink("Mở quản lý danh mục", "Index", "Categories", null, new { @class = "btn-brand" })
+    </div>
+</div>

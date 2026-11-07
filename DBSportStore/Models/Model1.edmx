@@ -40,6 +40,8 @@
           <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OrderDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="RecipientName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ShippingPhone" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="ShippingAddress" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Status" Type="nvarchar" MaxLength="30" Nullable="false" />
@@ -226,6 +228,8 @@
           <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="RecipientName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShippingPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ShippingAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Status" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
@@ -417,6 +421,8 @@
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="RecipientName" ColumnName="RecipientName" />
+                <ScalarProperty Name="ShippingPhone" ColumnName="ShippingPhone" />
                 <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
                 <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
                 <ScalarProperty Name="Status" ColumnName="Status" />

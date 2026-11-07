@@ -1,0 +1,9 @@
+@{
+    ViewBag.Title = "Kiểm tra quyền Admin";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+}
+<div class="catalog-empty">
+    <h2>Đăng nhập Admin thành công</h2>
+    <p>Xin chào @Session["UserName"]. Tài khoản hiện tại có quyền Admin.</p>
+    @Html.ActionLink("Mở trang quản trị", "Index", "Admin", null, new { @class = "btn-brand" })
+</div>

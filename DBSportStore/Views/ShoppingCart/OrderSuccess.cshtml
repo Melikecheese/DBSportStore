@@ -1,0 +1,44 @@
+@model DBSportStore.Models.OrderPro
+@{
+    ViewBag.Title = "Đặt hàng thành công";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+}
+<div class="catalog-empty">
+    <h2>Đặt hàng thành công</h2>
+    <p>Mã đơn hàng: <strong>#@Model.OrderID</strong></p>
+    <p>Ngày đặt: @Model.OrderDate.ToString("dd/MM/yyyy HH:mm")</p>
+    <p>Trạng thái: <strong>@Model.Status</strong></p>
+</div>
+
+<div class="store-shell" style="grid-template-columns:1fr 1fr;">
+    <section class="category-panel">
+        <h3>Thông tin người nhận</h3>
+        <p>Họ tên: @Model.RecipientName</p>
+        <p>Số điện thoại: @Model.ShippingPhone</p>
+        <p>Email: @(Model.Customer == null ? "" : Model.Customer.Email)</p>
+        <p>Địa chỉ giao hàng: @Model.ShippingAddress</p>
+    </section>
+    <section class="category-panel">
+        <h3>Chi tiết đơn hàng</h3>
+        <table class="table">
+            <thead>
+                <tr><th>Sản phẩm</th><th>Đơn giá</th><th>SL</th><th>Thành tiền</th></tr>
+            </thead>
+            <tbody>
+                @foreach (var detail in Model.OrderDetails)
+                {
+                    <tr>
+                        <td>@(detail.Product == null ? "" : detail.Product.ProductName)</td>
+                        <td>@detail.UnitPrice.ToString("#,##0") đ</td>
+                        <td>@detail.Quantity</td>
+                        <td>@((detail.UnitPrice * detail.Quantity).ToString("#,##0")) đ</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <h3>Tổng tiền: @Model.TotalAmount.ToString("#,##0") đ</h3>
+    </section>
+</div>
+<p style="margin:20px 0;">
+    @Html.ActionLink("Tiếp tục mua hàng", "Index", "Store", null, new { @class = "btn-brand" })
+</p>
