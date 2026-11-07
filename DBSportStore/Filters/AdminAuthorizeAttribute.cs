@@ -18,7 +18,8 @@ namespace DBSportStore.Filters
 
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
-            if (filterContext.HttpContext.Session["UserID"] == null)
+            if (filterContext.HttpContext.Session == null ||
+                filterContext.HttpContext.Session["UserID"] == null)
             {
                 filterContext.Result = new RedirectResult("~/Account/Login");
                 return;
