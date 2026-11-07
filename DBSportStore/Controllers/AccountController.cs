@@ -27,6 +27,7 @@ namespace DBSportStore.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
+            model.UserName = model.UserName.Trim();
             if (db.UserAccounts.Any(u => u.UserName == model.UserName))
             {
                 ModelState.AddModelError("UserName", "Tên đăng nhập đã tồn tại.");
