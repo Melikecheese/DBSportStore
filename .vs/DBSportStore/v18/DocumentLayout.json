@@ -1,12 +1,37 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\khiem\\OneDrive\\Desktop\\DBSportStore\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\khiem\\source\\repos\\New folder\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9CA64F6B-A4C1-4A6F-8A97-C6229A3B66E6}|DBSportStore\\DBSportStore.csproj|c:\\users\\khiem\\source\\repos\\new folder\\dbsportstore\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{9CA64F6B-A4C1-4A6F-8A97-C6229A3B66E6}|DBSportStore\\DBSportStore.csproj|solutionrelative:dbsportstore\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\khiem\\source\\repos\\New folder\\DBSportStore\\Web.config",
+              "RelativeDocumentMoniker": "DBSportStore\\Web.config",
+              "ToolTip": "C:\\Users\\khiem\\source\\repos\\New folder\\DBSportStore\\Web.config",
+              "RelativeToolTip": "DBSportStore\\Web.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2026-11-07T12:49:35.328Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
