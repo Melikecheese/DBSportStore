@@ -1,0 +1,2 @@
+@model DBSportStore.Models.Cart
+@Html.ActionLink("Giỏ hàng (" + (Model == null ? 0 : Model.TotalQuantity()) + ")", "ShowCart", "ShoppingCart", null, new { @class = "nav-cart-link" })
