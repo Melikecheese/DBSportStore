@@ -3,9 +3,11 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using DBSportStore.Models;
+using DBSportStore.Filters;
 
 namespace DBSportStore.Controllers
 {
+    [AdminAuthorize]
     public class CategoriesController : Controller
     {
         private readonly DBSportStoreEntities db = new DBSportStoreEntities();
