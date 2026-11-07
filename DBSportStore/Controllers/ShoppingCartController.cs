@@ -89,9 +89,9 @@ namespace DBSportStore.Controllers
             if (Session["CustomerID"] != null)
             {
                 int customerId = Convert.ToInt32(Session["CustomerID"]);
+                int userId = Convert.ToInt32(Session["UserID"]);
                 Customer customer = db.Customers.FirstOrDefault(c =>
-                    c.CustomerID == customerId &&
-                    c.UserID == (int?)Session["UserID"]);
+                    c.CustomerID == customerId && c.UserID == userId);
 
                 if (customer != null)
                 {
