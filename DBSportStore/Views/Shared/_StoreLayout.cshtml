@@ -1,4 +1,4 @@
-﻿@* ===== LAYOUT DÙNG CHUNG CHO TOÀN WEBSITE ===== *@
+@* Layout chung của SportStore; menu thay đổi theo trạng thái đăng nhập. *@
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,16 +15,33 @@
     </div>
     <header class="store-header">
         <div class="container">
-            <a class="brand" href="@Url.Action("Index","Store")">SPORT<span>STORE</span></a>
+            <a class="brand" href="@Url.Action("Index", "Store")">SPORT<span>STORE</span></a>
             <nav class="store-nav">
                 @Html.ActionLink("Giới thiệu", "AboutStore", "Store")
                 @Html.ActionLink("Trang chủ", "Index", "Store")
-                @Html.ActionLink("Quản lý sản phẩm", "Index", "Products")
-                @Html.ActionLink("Quản lý danh mục", "Index", "Categories")
-                <a href="#">Quản lý khách hàng</a>
-                <a href="#">Quản lý đơn hàng</a>
-                <a href="#">Giỏ hàng</a>
-                <a href="#">Đăng nhập</a>
+                @Html.Action("BagCart", "ShoppingCart")
+
+                @if (Session["UserID"] == null)
+                {
+                    @Html.ActionLink("Đăng ký", "SignUp", "Account")
+                    @Html.ActionLink("Đăng nhập", "Login", "Account")
+                }
+                else
+                {
+                    if (Convert.ToString(Session["Role"]) == "Admin")
+                    {
+                        @Html.ActionLink("Quản trị", "Index", "Admin")
+                        @Html.ActionLink("Sản phẩm", "Index", "Products")
+                        @Html.ActionLink("Danh mục", "Index", "Categories")
+                    }
+
+                    <span class="nav-user">Xin chào @(Session["FullName"] ?? Session["UserName"])</span>
+                    using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { @class = "nav-logout-form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="nav-link-button">Đăng xuất</button>
+                    }
+                }
             </nav>
         </div>
     </header>
